@@ -11,6 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "decode01.Droid", "decode01\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "decode01.WinPhone", "decode01\decode01.WinPhone\decode01.WinPhone.csproj", "{960A32BD-F114-4BC1-A30F-4947A7FEB719}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{89087CD2-742B-489C-A599-61CC9658479C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -60,6 +67,7 @@ Global
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|x86.ActiveCfg = Debug|Any CPU

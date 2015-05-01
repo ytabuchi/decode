@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ig="clr-namespace:Infragistics.XF.Controls;assembly=InfragisticsXF.Controls.Charts"
+             xmlns:local="clr-namespace:decode01;assembly=decode01"
+             x:Class="decode01.Page2"
+             Padding="0,20,0,0"
+             >
+  <ContentPage.BindingContext>
+    <local:Page2Data />
+  </ContentPage.BindingContext>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <StackLayout Orientation="Horizontal">
+      <DatePicker Date="{Binding StartDate, Mode=TwoWay}" />
+      <DatePicker Date="{Binding EndDate, Mode=TwoWay}" />
+      <Button Text="データを取得" Command="{Binding LoadDataCommand}" />
+      <Button Text="更新開始" Command="{Binding StartFeedCommand}" />
+      <Button Text="更新停止" Command="{Binding StopFeedCommand}" />
+    </StackLayout>
+    <ig:XFDataChart x:Name="Chart" Grid.Row="1"
+                HorizontalZoomable="True"
+                VerticalZoomable="True" >
+      <ig:XFDataChart.Axes>
+        <ig:CategoryXAxis x:Name="xAxis"
+                          ItemsSource="{Binding TempCollection}" Label="RegisterDate" />
+        <ig:NumericYAxis  x:Name="yAxis" />
+      </ig:XFDataChart.Axes>
+      <ig:XFDataChart.Series>
+        <ig:LineSeries ItemsSource="{Binding TempCollection}"
+                 ValueMemberPath="Value"
+                 XAxis="{x:Reference xAxis}"
+                 YAxis="{x:Reference yAxis}"
+                 Thickness="5"
+                 TrendLineBrush="Red"
+                 TrendLineThickness="10"
+                 TrendLineType="SimpleAverage"
+                 TrendLinePeriod="70"
+                       >
+        </ig:LineSeries>
+      </ig:XFDataChart.Series>
+    </ig:XFDataChart >
+
+  </Grid>
+   
+</ContentPage>
