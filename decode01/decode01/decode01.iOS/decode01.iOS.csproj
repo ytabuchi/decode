@@ -12,6 +12,8 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>decode01iOS</AssemblyName>
     <NuGetPackageImportStamp>ae9a4ed2</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -123,6 +125,30 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="IG.Unified, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\Xamarin.iOS10\IG.Unified.dll</HintPath>
+    </Reference>
+    <Reference Include="IGChart.Unified, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\Xamarin.iOS10\IGChart.Unified.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Charts, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.Controls.Charts.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Charts.iOS, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.Controls.Charts.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsXF.iOS, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -151,5 +177,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.2.6355\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.2.6355\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

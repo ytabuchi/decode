@@ -23,6 +23,7 @@ namespace decode01.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Infragistics.XF.Initializers.Charts.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
