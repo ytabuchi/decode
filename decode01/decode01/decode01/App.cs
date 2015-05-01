@@ -12,7 +12,7 @@ namespace decode01
         public App()
         {
             // The root page of your application
-            MainPage = new Page2();
+            MainPage = new Page1();
         }
 
         protected override void OnStart()

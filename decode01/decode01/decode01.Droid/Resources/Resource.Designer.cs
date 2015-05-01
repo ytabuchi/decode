@@ -26,10 +26,6 @@ namespace decode01.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Infragistics.XF.Controls.Android.Resource.String.ApplicationName = global::decode01.Droid.Resource.String.ApplicationName;
-			global::Infragistics.XF.Controls.Android.Resource.String.Hello = global::decode01.Droid.Resource.String.Hello;
-			global::Infragistics.Xamarin.Charts.Android.Resource.String.ApplicationName = global::decode01.Droid.Resource.String.ApplicationName;
-			global::Infragistics.Xamarin.Charts.Android.Resource.String.Hello = global::decode01.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::decode01.Droid.Resource.String.ApplicationName;
 			global::Xamarin.Forms.Platform.Resource.String.Hello = global::decode01.Droid.Resource.String.Hello;
 		}

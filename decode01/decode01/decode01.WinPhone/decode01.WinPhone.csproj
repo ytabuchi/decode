@@ -26,8 +26,6 @@
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
     <NuGetPackageImportStamp>9b68d304</NuGetPackageImportStamp>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -166,38 +164,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="InfragisticsWP8.Controls.Charts.XamDataChart.v15.1, Version=15.1.20151.102, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\wp8\InfragisticsWP8.Controls.Charts.XamDataChart.v15.1.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsWP8.Controls.Interactions.XamInfoBox.v15.1, Version=15.1.20151.102, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\wp8\InfragisticsWP8.Controls.Interactions.XamInfoBox.v15.1.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsWP8.Controls.Interactions.XamWindow.v15.1, Version=15.1.20151.102, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\wp8\InfragisticsWP8.Controls.Interactions.XamWindow.v15.1.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsWP8.DataVisualization.v15.1, Version=15.1.20151.102, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\wp8\InfragisticsWP8.DataVisualization.v15.1.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsWP8.v15.1, Version=15.1.20151.102, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\wp8\InfragisticsWP8.v15.1.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsXF">
-      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\wp8\InfragisticsXF.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsXF.Controls.Charts">
-      <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\wp8\InfragisticsXF.Controls.Charts.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsXF.Controls.Charts.WP">
-      <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\wp8\InfragisticsXF.Controls.Charts.WP.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsXF.WP">
-      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\wp8\InfragisticsXF.WP.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
       <HintPath>..\..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
       <Private>True</Private>
@@ -235,7 +201,5 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.2.6355\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.2.6355\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

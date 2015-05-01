@@ -18,7 +18,6 @@ namespace decode01.WinPhone
             SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
 
             global::Xamarin.Forms.Forms.Init();
-            Infragistics.XF.Initializers.Charts.Init();
             LoadApplication(new decode01.App());
         }
     }
