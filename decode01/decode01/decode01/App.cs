@@ -12,8 +12,8 @@ namespace decode01
         public App()
         {
             // The root page of your application
-          //  MainPage = new Page1();
-            MainPage = new Page2();
+            //MainPage = new ThermoMeterPage();
+            MainPage = new NavigationPage(new StartPage());
         }
 
         protected override void OnStart()
@@ -32,22 +32,30 @@ namespace decode01
         }
     }
 
-    //public class StartPage : ContentPage
-    //{
-    //    public StartPage()
-    //    {
-    //        Title = "JsonPages";
-    //        Content = new StackLayout
-    //        {
-    //            Children = {
-    //                new Button {
-    //                    Text = "CustomCell 1",
-    //                    Command = new Command(async () => await Navigation.PushAsync(new Page1()))
-    //                },
+    public class StartPage : ContentPage
+    {
+        public StartPage()
+        {
+            Title = "de:code Demo App";
+            Content = new StackLayout
+            {
+                Children = {
+                    new Button {
+                        Text = "ThermoMeter",
+                        Command = new Command(async () => await Navigation.PushAsync(new ThermoMeterPage()))
+                    },
+                    new Button {
+                        Text = "CustomCell 1",
+                        Command = new Command(async () => await Navigation.PushAsync(new Page1()))
+                    },
+                    new Button{
+                        Text = "Infragistics Control!",
+                        Command = new Command(async () => await Navigation.PushAsync(new Page2()))
+                    },
 
-    //            }
-    //        };
-    //    }
+                }
+            };
+        }
 
-    //}
+    }
 }
