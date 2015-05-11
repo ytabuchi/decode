@@ -23,7 +23,8 @@
     </StackLayout>
     <ig:XFDataChart x:Name="Chart" Grid.Row="1"
                 HorizontalZoomable="True"
-                VerticalZoomable="True" >
+              
+                    >
       <ig:XFDataChart.Axes>
         <ig:CategoryXAxis x:Name="xAxis"
                           ItemsSource="{Binding TempCollection}" Label="RegisterDate" />
