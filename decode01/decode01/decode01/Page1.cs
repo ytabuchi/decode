@@ -25,7 +25,7 @@ namespace decode01
             {
                 HasUnevenRows = true, // 行の高さを自動設定します。
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                ItemTemplate = new DataTemplate(typeof(CustomCell1))
+                ItemTemplate = new DataTemplate(typeof(CustomCell))
             };
 
             Title = "Json";
@@ -47,8 +47,8 @@ namespace decode01
             base.OnAppearing();
 
             // Json を取得して ListView の ItemsSource に指定します。
-            var root = await Json.GetJsonAsync();
-            list.ItemsSource = root.tempdata;
+            //var root = await Json.GetJsonAsync();
+            //list.ItemsSource = root.tempdata;
         }
     }
 }

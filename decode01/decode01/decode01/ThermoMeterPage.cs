@@ -14,24 +14,57 @@ namespace decode01
     {
         BoxView thermoBar;
         Image bgImage;
+        DatePicker startDate;
+        TimePicker startTime;
+        StackLayout dateLayout;
+
         public ThermoMeterPage()
         {
-            AbsoluteLayout abs = new AbsoluteLayout();
+            AbsoluteLayout abs = new AbsoluteLayout { 
+                BackgroundColor = Color.White,
+            };
             bgImage = new Image { Aspect = Aspect.AspectFit };
             bgImage.Source = ImageSource.FromResource("decode01.Thermo.png");
+
+            startDate = new DatePicker
+            {
+                Format = "yyyy/MM/dd",
+                Date = new DateTime(2015, 4, 1),
+            };
+            startTime = new TimePicker
+            {
+                Format = "hh時",
+                Time = new TimeSpan(1, 0, 0),
+            };
+            dateLayout = new StackLayout {
+                Orientation = StackOrientation.Horizontal,
+                Children = {
+                    startDate,
+                    startTime,
+                    new Button {
+                        Text = "温度取得",
+                        Command = new Command(() => 
+                            RotateThermoBarAsync(startDate.Date, startDate.Date.AddDays(1), startTime.Time))
+                    }
+                }
+            };
 
             abs.Children.Add(bgImage);
             abs.Children.Add(thermoBar =
                 new BoxView
                 {
                     Color = Color.FromHex("#bd3f3f"),
-                    Rotation = -130,
+                    Rotation = -120,
+                    Opacity = 0.7,
                 });
+            abs.Children.Add(dateLayout);
+
             Content = abs;
+            Title = "温度計";
             SizeChanged += OnPageSizeChanged;
         }
 
-        async void OnPageSizeChanged (object sender, EventArgs args)
+        void OnPageSizeChanged (object sender, EventArgs args)
         {
             Point center = new Point(this.Width / 2, this.Height / 2);
             double radius = 0.35 * Math.Min(this.Width, this.Height);
@@ -45,6 +78,10 @@ namespace decode01
                 AbsoluteLayoutFlags.PositionProportional);
             AbsoluteLayout.SetLayoutBounds(bgImage,
                 new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutFlags(dateLayout,
+                AbsoluteLayoutFlags.PositionProportional);
+            AbsoluteLayout.SetLayoutBounds(dateLayout,
+                new Rectangle(0.5, 0, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 
             AbsoluteLayout.SetLayoutBounds(thermoBar,
                 new Rectangle(center.X - 0.5 * width,
@@ -52,18 +89,23 @@ namespace decode01
                                   width, height));
             thermoBar.AnchorX = 0.51;
             thermoBar.AnchorY = offset;
-
-            
-
-            var thermo = 25;
-            var angle = (thermo - 10) * 3;
-            await thermoBar.RotateTo(-120, 2000, Easing.CubicIn);
-            await thermoBar.RotateTo(angle, 3000, Easing.CubicOut);
-
-            System.Diagnostics.Debug.WriteLine("Done");
         }
 
-        private static async Task<List<Temperature>> GetTemperatureAsync(DateTime from, DateTime to)
+        private async void RotateThermoBarAsync(DateTime from, DateTime to, TimeSpan time)
+        {
+            var tempdata = await GetTemperatureAsync(from, to);
+            //var thermo = 25;
+
+            var thermo = tempdata[time.Hours - 1].Value;
+
+            var angle = (thermo - 10) * 3;
+            //await thermoBar.RotateTo(-120, 2000, Easing.CubicIn);
+            await thermoBar.RotateTo(angle, 3000, Easing.CubicOut);
+
+            DependencyService.Get<ITextToSpeech>().Speak(string.Format("{0}℃です", thermo.ToString()));
+        }
+
+        private async Task<List<Temperature>> GetTemperatureAsync(DateTime from, DateTime to)
         {
 
             var uri = new Uri(
@@ -76,4 +118,6 @@ namespace decode01
         }
 
     }
+
+
 }

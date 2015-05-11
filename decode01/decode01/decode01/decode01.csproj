@@ -38,8 +38,8 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Common\BindableBase.cs" />
-    <Compile Include="CustomCell1.cs" />
-    <Compile Include="Json.cs" />
+    <Compile Include="CustomCell.cs" />
+    <Compile Include="ITextToSpeech.cs" />
     <Compile Include="Page1.cs" />
     <Compile Include="Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>

@@ -37,6 +37,7 @@ namespace decode01
         public StartPage()
         {
             Title = "de:code Demo App";
+            Padding = 10;
             Content = new StackLayout
             {
                 Children = {
