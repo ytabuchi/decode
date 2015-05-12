@@ -11,9 +11,9 @@ namespace decode01
     /// <summary>
     /// ViewCell を使用した CustomCell です。
     /// </summary>
-    public class CustomCell1 : ViewCell
+    public class CustomCell : ViewCell
     {
-        public CustomCell1()
+        public CustomCell()
         {
             var header = new Label()
             {
