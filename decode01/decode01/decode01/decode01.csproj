@@ -41,6 +41,10 @@
     <Compile Include="CustomCell.cs" />
     <Compile Include="ITextToSpeech.cs" />
     <Compile Include="Page1.cs" />
+    <Compile Include="Page1XAMLVer.xaml.cs">
+      <DependentUpon>Page1XAMLVer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page1XAMLVerData.cs" />
     <Compile Include="Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
     </Compile>
@@ -94,6 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Thermo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Page1XAMLVer.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
