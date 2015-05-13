@@ -38,9 +38,10 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Common\BindableBase.cs" />
-    <Compile Include="CustomCell.cs" />
     <Compile Include="ITextToSpeech.cs" />
-    <Compile Include="Page1.cs" />
+    <Compile Include="ListViewPage.xaml.cs">
+      <DependentUpon>ListViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
     </Compile>
@@ -94,6 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Thermo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ListViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

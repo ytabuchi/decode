@@ -43,15 +43,18 @@ namespace decode01
                 Children = {
                     new Button {
                         Text = "ThermoMeter",
-                        Command = new Command(async () => await Navigation.PushAsync(new ThermoMeterPage()))
+                        Command = new Command(async () => 
+                            await Navigation.PushAsync(new ThermoMeterPage()))
                     },
                     new Button {
-                        Text = "CustomCell 1",
-                        Command = new Command(async () => await Navigation.PushAsync(new Page1()))
+                        Text = "ListView",
+                        Command = new Command(async () => 
+                            await Navigation.PushAsync(new ListViewPage()))
                     },
                     new Button{
                         Text = "Infragistics Control!",
-                        Command = new Command(async () => await Navigation.PushAsync(new Page2()))
+                        Command = new Command(async () => 
+                            await Navigation.PushAsync(new Page2()))
                     },
 
                 }

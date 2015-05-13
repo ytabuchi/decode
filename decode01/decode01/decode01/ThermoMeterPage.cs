@@ -94,12 +94,9 @@ namespace decode01
         private async void RotateThermoBarAsync(DateTime from, DateTime to, TimeSpan time)
         {
             var tempdata = await GetTemperatureAsync(from, to);
-            //var thermo = 25;
-
-            var thermo = tempdata[time.Hours - 1].Value;
-
+            var thermo = tempdata[time.Hours].Value;
             var angle = (thermo - 10) * 3;
-            //await thermoBar.RotateTo(-120, 2000, Easing.CubicIn);
+
             await thermoBar.RotateTo(angle, 3000, Easing.CubicOut);
 
             DependencyService.Get<ITextToSpeech>().Speak(string.Format("{0}℃です", thermo.ToString()));
