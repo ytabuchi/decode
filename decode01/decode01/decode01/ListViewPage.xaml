@@ -18,6 +18,30 @@
         <Setter Property="BackgroundColor" Value="Gray" />
         <Setter Property="BorderRadius" Value="8"/>
       </Style>
+    
+    <DataTemplate x:Key="MonthTemplate">
+
+          <!--
+          <TextCell Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd  HH時}'}"
+                    Detail="{Binding Value}" />
+          -->
+
+          <ViewCell>
+            <StackLayout Orientation="Horizontal" Padding="5">
+              <Image Source="{Binding Image}" Opacity="{Binding OpacityValue}" />
+              <StackLayout Orientation="Vertical">
+                <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM}'}"
+                       YAlign="Center" />
+                <Label Text="{Binding Value, StringFormat='{0} ℃'}"
+                       TextColor="Navy"
+                       YAlign="Center" />
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+
+
+        </DataTemplate>  
+  
     </ResourceDictionary>
 
   </ContentPage.Resources>
@@ -37,6 +61,7 @@
         -->
       </Button>
       <Button Text="降順" Clicked="DescendingClicked"></Button>
+    <Button Text="グループ" Clicked="DoGrouping"></Button>
     </StackLayout>
     <ListView x:Name="list"
               VerticalOptions="FillAndExpand"

@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using decode01.Converters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -9,6 +11,7 @@ using Xamarin.Forms;
 
 namespace decode01
 {
+   
     public partial class ListViewPage : ContentPage
     {
         DateTime StartDate = new DateTime(2015, 4, 1);
@@ -51,6 +54,17 @@ namespace decode01
             list.ItemsSource = list1;
         }
 
+        void DoGrouping(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Grouping");
+            //this.list.GroupDisplayBinding = 
+            //    new Binding("RegisterDate", 
+            //        BindingMode.OneWay, new MonthConveter());
+            //this.list.IsGroupingEnabled = true;
+            this.list.ItemTemplate = 
+                this.Resources["MonthTemplate"] as DataTemplate;
+
+        }
 
         private async Task<List<Temperature>> GetTemperatureAsync(DateTime from, DateTime to)
         {
