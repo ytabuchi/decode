@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="decode01.ListViewPage"
+             Title="ListView">
+  <ContentPage.Resources>
+
+    <ResourceDictionary>
+      <!-- ラベルスタイル -->
+      <Style x:Key="LabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="#3E7FC2" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontAttributes" Value="Bold" />
+      </Style>
+      <!-- ボタンスタイル -->
+      <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="Gray" />
+        <Setter Property="BorderRadius" Value="8"/>
+      </Style>
+    </ResourceDictionary>
+
+  </ContentPage.Resources>
+  
+  <StackLayout>
+    <StackLayout Orientation="Horizontal">
+      <DatePicker Date="{Binding StartDate, Mode=TwoWay}" Format="MM/dd" />
+      <DatePicker Date="{Binding EndDate, Mode=TwoWay}" Format="MM/dd"/>
+      <Button Text="取得" Clicked="OnButtonClicked" Style="{StaticResource ButtonStyle}" />
+      <Button Text="昇順" Clicked="AscendingClicked">
+        <!--
+        <Button.Triggers>
+          <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference list}}" Value="null">
+            <Setter Property="IsEnabled" Value="False" />
+          </DataTrigger>
+        </Button.Triggers>
+        -->
+      </Button>
+      <Button Text="降順" Clicked="DescendingClicked"></Button>
+    </StackLayout>
+    <ListView x:Name="list"
+              VerticalOptions="FillAndExpand"
+              HasUnevenRows="True">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+
+          <!--
+          <TextCell Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd  HH時}'}"
+                    Detail="{Binding Value}" />
+          -->
+
+          <ViewCell>
+            <StackLayout Orientation="Horizontal" Padding="5">
+              <Image Source="{Binding Image}" Opacity="{Binding OpacityValue}" />
+              <StackLayout Orientation="Vertical">
+                <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd HH時 }'}"
+                       YAlign="Center" />
+                <Label Text="{Binding Value, StringFormat='{0} ℃'}"
+                       TextColor="Navy"
+                       YAlign="Center" />
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+
+
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    
+  </StackLayout>  
+</ContentPage>

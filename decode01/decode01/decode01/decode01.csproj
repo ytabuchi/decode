@@ -38,13 +38,10 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Common\BindableBase.cs" />
-    <Compile Include="CustomCell.cs" />
     <Compile Include="ITextToSpeech.cs" />
-    <Compile Include="Page1.cs" />
-    <Compile Include="Page1XAMLVer.xaml.cs">
-      <DependentUpon>Page1XAMLVer.xaml</DependentUpon>
+    <Compile Include="ListViewPage.xaml.cs">
+      <DependentUpon>ListViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page1XAMLVerData.cs" />
     <Compile Include="Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
     </Compile>
@@ -100,7 +97,7 @@
     <EmbeddedResource Include="Thermo.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Page1XAMLVer.xaml">
+    <EmbeddedResource Include="ListViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
