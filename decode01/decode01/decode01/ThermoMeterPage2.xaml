@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ig="clr-namespace:Infragistics.XF.Controls;assembly=InfragisticsXF.Controls.Gauges"
+             xmlns:local="clr-namespace:decode01;assembly=decode01"
+             x:Class="decode01.ThermoMeterPage2">
+  <ContentPage.BindingContext>
+    <local:ThermoMeterPage2Data />
+  </ContentPage.BindingContext>
+  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+  <StackLayout BackgroundColor="White">
+    <StackLayout Orientation="Horizontal">
+      <DatePicker Date="{Binding StartDateTime, Mode=TwoWay}" />
+      <TimePicker Time="{Binding SelectedTime, Mode=TwoWay}" />
+      <Button  Text="温度取得" Command="{Binding GetTemperatureCommand}" />
+    </StackLayout>
+    <ig:XFRadialGauge
+        Value="{Binding TemperatureValue}"
+        VerticalOptions="FillAndExpand"
+        ScaleStartAngle="150" ScaleEndAngle="30"
+                         MinimumValue="-30" MaximumValue="40" Interval="10"
+                         ScaleBrush="{x:Null}" ScaleEndExtent="0.1"
+                         ScaleOversweep="3" TickEndExtent="0.8"
+                         TickStartExtent="0.7" MinorTickEndExtent="0.8"
+                         MinorTickStartExtent="0.7" MinorTickCount="1"
+                         NeedleShape="Rectangle" NeedleEndExtent="0.67"
+                         NeedleEndWidthRatio="0.05" NeedleStartWidthRatio="0.05"
+                         BackingStrokeThickness="5" DuplicateLabelOmissionStrategy="OmitFirst"
+                         NeedlePivotShape="None" NeedlePivotStrokeThickness="0"
+                         NeedleBrush="#99BD5151" TickBrush="#FF3A3C3E"
+                         TickStrokeThickness="5" FontSize="16"
+                         LabelExtent="0.6" TransitionDuration="1000"
+                           >
+
+    </ig:XFRadialGauge>
+  </StackLayout>
+  
+</ContentPage>

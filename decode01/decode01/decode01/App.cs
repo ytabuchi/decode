@@ -56,6 +56,11 @@ namespace decode01
                         Command = new Command(async () => 
                             await Navigation.PushAsync(new Page2()))
                     },
+                    new Button{
+                        Text = "Infragistics Gauge!",
+                        Command = new Command(async () => 
+                            await Navigation.PushAsync(new ThermoMeterPage2()))
+                    },
 
                 }
             };
