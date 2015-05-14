@@ -18,6 +18,7 @@ namespace decode01.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Infragistics.XF.Initializers.Charts.Init();
+            Infragistics.XF.Initializers.Gauges.Init();
             LoadApplication(new App());
         }
     }

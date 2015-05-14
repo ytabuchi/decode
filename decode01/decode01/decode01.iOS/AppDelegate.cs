@@ -24,6 +24,7 @@ namespace decode01.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             Infragistics.XF.Initializers.Charts.Init();
+            Infragistics.XF.Initializers.Gauges.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

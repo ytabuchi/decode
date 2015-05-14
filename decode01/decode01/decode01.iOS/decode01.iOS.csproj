@@ -166,6 +166,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.Controls.Charts.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="InfragisticsXF.Controls.Gauges, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.Controls.Gauges.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Gauges.iOS, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.Controls.Gauges.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="InfragisticsXF.iOS, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.iOS.dll</HintPath>

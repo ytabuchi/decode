@@ -59,6 +59,10 @@
     <Reference Include="InfragisticsXF.Controls.Charts">
       <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\portable-net45+wp8+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\InfragisticsXF.Controls.Charts.dll</HintPath>
     </Reference>
+    <Reference Include="InfragisticsXF.Controls.Gauges, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\portable-net45+wp8+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\InfragisticsXF.Controls.Gauges.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
