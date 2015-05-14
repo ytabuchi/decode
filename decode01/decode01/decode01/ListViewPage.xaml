@@ -1,68 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:decode01;assembly=decode01"
              x:Class="decode01.ListViewPage"
              Title="ListView">
-  <ContentPage.Resources>
 
+  <ContentPage.Resources>
     <ResourceDictionary>
+
       <!-- ラベルスタイル -->
       <Style x:Key="LabelStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="#3E7FC2" />
-        <Setter Property="FontSize" Value="12" />
-        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="#333333" />
+        <Setter Property="FontSize" Value="14" />
       </Style>
       <!-- ボタンスタイル -->
       <Style x:Key="ButtonStyle" TargetType="Button">
         <Setter Property="TextColor" Value="White" />
-        <Setter Property="BackgroundColor" Value="Gray" />
-        <Setter Property="BorderRadius" Value="8"/>
+        <Setter Property="BackgroundColor" Value="#1976D2" />
+        <Setter Property="BorderRadius" Value="5"/>
       </Style>
-    
-    <DataTemplate x:Key="MonthTemplate">
-
-          <!--
-          <TextCell Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd  HH時}'}"
-                    Detail="{Binding Value}" />
-          -->
-
-          <ViewCell>
-            <StackLayout Orientation="Horizontal" Padding="5">
-              <Image Source="{Binding Image}" Opacity="{Binding OpacityValue}" />
-              <StackLayout Orientation="Vertical">
-                <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM}'}"
-                       YAlign="Center" />
-                <Label Text="{Binding Value, StringFormat='{0} ℃'}"
-                       TextColor="Navy"
-                       YAlign="Center" />
-              </StackLayout>
+      <!-- DataTemplate 置き換え -->
+      <DataTemplate x:Key="MonthTemplate">
+        <ViewCell>
+          <StackLayout Orientation="Horizontal" Padding="5">
+            <Image Source="thermos.png" Opacity="{Binding OpacityValue}" />
+            <StackLayout Orientation="Vertical">
+              <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM}'}"
+                     YAlign="Center" />
+              <Label Text="{Binding Value, StringFormat='{0} ℃'}"
+                     TextColor="Navy"
+                     YAlign="Center" />
             </StackLayout>
-          </ViewCell>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+      <!-- Converter -->
+      <!--<local:Converters.OpacityConverter x:Key="opacityConverter" />-->
 
-
-        </DataTemplate>  
-  
     </ResourceDictionary>
-
   </ContentPage.Resources>
-  
+
   <StackLayout>
-    <StackLayout Orientation="Horizontal">
-      <DatePicker Date="{Binding StartDate, Mode=TwoWay}" Format="MM/dd" />
-      <DatePicker Date="{Binding EndDate, Mode=TwoWay}" Format="MM/dd"/>
-      <Button Text="取得" Clicked="OnButtonClicked" Style="{StaticResource ButtonStyle}" />
-      <Button Text="昇順" Clicked="AscendingClicked">
-        <!--
+    <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="Center">
+      <DatePicker x:Name="StartDatePicker" Date="2015/4/1" Format="yyyy/MM/dd" />
+      <Entry x:Name="EndDateEntry" Text="" WidthRequest="40" Placeholder="日">
+        <Entry.Triggers>
+          <EventTrigger Event="TextChanged">
+            <local:EntryValidation />
+          </EventTrigger>
+        </Entry.Triggers>
+      </Entry>
+      <Button Text="取得" Clicked="GetClicked" Style="{StaticResource ButtonStyle}" WidthRequest="70"></Button>
+      <Button Text="平均" Clicked="AverageClicked" WidthRequest="70">
         <Button.Triggers>
-          <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference list}}" Value="null">
+          <DataTrigger TargetType="Button"
+                       Binding="{Binding Source={x:Reference EndDateEntry}, Path=Text.Length}"
+                       Value="0">
             <Setter Property="IsEnabled" Value="False" />
           </DataTrigger>
         </Button.Triggers>
-        -->
       </Button>
-      <Button Text="降順" Clicked="DescendingClicked"></Button>
-    <Button Text="グループ" Clicked="DoGrouping"></Button>
     </StackLayout>
+
     <ListView x:Name="list"
               VerticalOptions="FillAndExpand"
               HasUnevenRows="True">
@@ -74,14 +73,19 @@
                     Detail="{Binding Value}" />
           -->
 
+
+<!--Converter={StaticResource opacityConverter}-->
+
+
           <ViewCell>
             <StackLayout Orientation="Horizontal" Padding="5">
-              <Image Source="{Binding Image}" Opacity="{Binding OpacityValue}" />
+              <Image Source="thermos.png" Opacity="{Binding OpacityValue}" />
               <StackLayout Orientation="Vertical">
                 <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd HH時 }'}"
+                       Style="{StaticResource LabelStyle}"
                        YAlign="Center" />
                 <Label Text="{Binding Value, StringFormat='{0} ℃'}"
-                       TextColor="Navy"
+                       TextColor="#3E7FC2"
                        YAlign="Center" />
               </StackLayout>
             </StackLayout>
@@ -91,6 +95,6 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-    
-  </StackLayout>  
+
+  </StackLayout>
 </ContentPage>

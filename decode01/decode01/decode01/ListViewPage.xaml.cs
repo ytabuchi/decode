@@ -14,28 +14,25 @@ namespace decode01
    
     public partial class ListViewPage : ContentPage
     {
-        DateTime StartDate = new DateTime(2015, 4, 1);
-        DateTime EndDate = new DateTime(2015, 4, 4);
-
         List<NewTemperature> tempList;
-        const string url = "http://xmdemo1.azurewebsites.net/thermos.png";
+        List<Temperature> tempdata;
 
         public ListViewPage()
         {
             InitializeComponent();
         }
 
-        private async void OnButtonClicked(object sender, EventArgs args)
+        async void GetClicked(object sender, EventArgs args)
         {
-
-            var tempdata = await GetTemperatureAsync(StartDate, EndDate);
-
+            var StartDate = StartDatePicker.Date;
+            var EndDate = StartDatePicker.Date.AddDays(Double.Parse(EndDateEntry.Text));
+            tempdata = await GetTemperatureAsync(StartDate, EndDate);
+            
             tempList = (from x in tempdata
                         select new NewTemperature
                         {
                             RegisterDate = x.RegisterDate,
                             Value = x.Value,
-                            Image = url,
                             OpacityValue = x.Value * 3.5 / 100,
                         }).ToList();
 
@@ -43,6 +40,8 @@ namespace decode01
             
         }
 
+        #region 並べ替えは不使用
+        /*
         void AscendingClicked(object sender, EventArgs e)
         {
             var list1 = tempList.OrderBy(a => a.Value).ToList();
@@ -53,17 +52,28 @@ namespace decode01
             var list1 = tempList.OrderByDescending(a => a.Value).ToList();
             list.ItemsSource = list1;
         }
+        */
+        #endregion
 
-        void DoGrouping(object sender, EventArgs e)
+        async void AverageClicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("Grouping");
-            //this.list.GroupDisplayBinding = 
-            //    new Binding("RegisterDate", 
-            //        BindingMode.OneWay, new MonthConveter());
-            //this.list.IsGroupingEnabled = true;
-            this.list.ItemTemplate = 
-                this.Resources["MonthTemplate"] as DataTemplate;
+            if (tempList == null)
+            {
+                var StartDate = StartDatePicker.Date;
+                var EndDate = StartDatePicker.Date.AddDays(Double.Parse(EndDateEntry.Text));
+                tempdata = await GetTemperatureAsync(StartDate, EndDate);
+            }
 
+            
+
+            //Debug.WriteLine("Grouping");
+            ////this.list.GroupDisplayBinding = 
+            ////    new Binding("RegisterDate", 
+            ////        BindingMode.OneWay, new MonthConveter());
+            ////this.list.IsGroupingEnabled = true;
+            ////this.list.GroupDisplayBinding = new Binding("Value",,new OpacityConverter());
+            //this.list.ItemTemplate =
+            //    this.Resources["MonthTemplate"] as DataTemplate;
         }
 
         private async Task<List<Temperature>> GetTemperatureAsync(DateTime from, DateTime to)
@@ -77,38 +87,20 @@ namespace decode01
             return JsonConvert.DeserializeObject<List<Temperature>>(json);
         }
 
-        //private DateTime startDate;
-        //public DateTime StartDate
-        //{
-        //    get { return startDate; }
-        //    set
-        //    {
-        //        if (startDate != value)
-        //        {
-        //            startDate = value;
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
+    }
 
-        //private DateTime endDate;
-        //public DateTime EndDate
-        //{
-        //    get { return endDate; }
-        //    set
-        //    {
-        //        if (endDate != value)
-        //        {
-        //            endDate = value;
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
+    public class EntryValidation : TriggerAction<Entry>
+    { 
+        protected override void Invoke(Entry sender)
+        {
+            double result;
+            bool isValid = Double.TryParse(sender.Text, out result);
+            sender.TextColor = isValid ? Color.Default : Color.Red;
+        }
     }
 
     public class NewTemperature : Temperature
     {
-        public string Image { get; set; }
         public double OpacityValue { get; set; }
     }
 }
