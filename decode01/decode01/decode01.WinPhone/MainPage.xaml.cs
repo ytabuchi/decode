@@ -19,6 +19,7 @@ namespace decode01.WinPhone
 
             global::Xamarin.Forms.Forms.Init();
             Infragistics.XF.Initializers.Charts.Init();
+            Infragistics.XF.Initializers.Gauges.Init();
             LoadApplication(new decode01.App());
         }
     }

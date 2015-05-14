@@ -79,6 +79,14 @@
     <Reference Include="InfragisticsXF.Controls.Charts.Android">
       <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\MonoAndroid10\InfragisticsXF.Controls.Charts.Android.dll</HintPath>
     </Reference>
+    <Reference Include="InfragisticsXF.Controls.Gauges, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\MonoAndroid10\InfragisticsXF.Controls.Gauges.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Gauges.Android, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\MonoAndroid10\InfragisticsXF.Controls.Gauges.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />

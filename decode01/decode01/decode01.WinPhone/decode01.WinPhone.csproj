@@ -170,6 +170,10 @@
       <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\wp8\InfragisticsWP8.Controls.Charts.XamDataChart.v15.1.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="InfragisticsWP8.Controls.Gauges.v15.1, Version=15.1.20151.102, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\wp8\InfragisticsWP8.Controls.Gauges.v15.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="InfragisticsWP8.Controls.Interactions.XamInfoBox.v15.1, Version=15.1.20151.102, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\wp8\InfragisticsWP8.Controls.Interactions.XamInfoBox.v15.1.dll</HintPath>
       <Private>True</Private>
@@ -196,6 +200,14 @@
     </Reference>
     <Reference Include="InfragisticsXF.Controls.Charts.WP, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\wp8\InfragisticsXF.Controls.Charts.WP.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Gauges, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\wp8\InfragisticsXF.Controls.Gauges.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="InfragisticsXF.Controls.Gauges.WP, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\wp8\InfragisticsXF.Controls.Gauges.WP.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="InfragisticsXF.WP, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
