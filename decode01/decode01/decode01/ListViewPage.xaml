@@ -23,7 +23,7 @@
       <DataTemplate x:Key="MonthTemplate">
         <ViewCell>
           <StackLayout Orientation="Horizontal" Padding="5">
-            <Image Source="thermos.png" Opacity="{Binding OpacityValue}" />
+            <Image Source="http://jxug.org/Thermo.png" Opacity="{Binding OpacityValue}" />
             <StackLayout Orientation="Vertical">
               <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM}'}"
                      YAlign="Center" />
@@ -79,7 +79,7 @@
 
           <ViewCell>
             <StackLayout Orientation="Horizontal" Padding="5">
-              <Image Source="thermos.png" Opacity="{Binding OpacityValue}" />
+              <Image Source="http://jxug.org/thermos.png" Opacity="{Binding OpacityValue}" />
               <StackLayout Orientation="Vertical">
                 <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd HH時 }'}"
                        Style="{StaticResource LabelStyle}"

@@ -21,10 +21,11 @@ namespace decode01
         public ThermoMeterPage()
         {
             AbsoluteLayout abs = new AbsoluteLayout { 
-                BackgroundColor = Color.White,
+                //BackgroundColor = Color.White,
             };
             bgImage = new Image { Aspect = Aspect.AspectFit };
-            bgImage.Source = ImageSource.FromResource("decode01.Thermo.png");
+            //bgImage.Source = ImageSource.FromResource("decode01.Thermo.png");
+            bgImage.Source = ImageSource.FromUri(new Uri("http://jxug.org/Thermo.png"));
 
             startDate = new DatePicker
             {
