@@ -11,7 +11,7 @@
     <RootNamespace>decode01.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>decode01iOS</AssemblyName>
-    <NuGetPackageImportStamp>250f6ae9</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>28b1cce3</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <PublishUrl>publish\</PublishUrl>
@@ -146,56 +146,24 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="IG.Unified, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\Xamarin.iOS10\IG.Unified.dll</HintPath>
-    </Reference>
-    <Reference Include="IGChart.Unified, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\Xamarin.iOS10\IGChart.Unified.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsXF, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsXF.Controls.Charts, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.Controls.Charts.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsXF.Controls.Charts.iOS, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Charts.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.Controls.Charts.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsXF.Controls.Gauges, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.Controls.Gauges.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="InfragisticsXF.Controls.Gauges.iOS, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Infragistics.Xamarin.Gauges.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.Controls.Gauges.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="InfragisticsXF.iOS, Version=15.1.20151.102, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infragistics.Xamarin.Core.15.1.20151.102\lib\Xamarin.iOS10\InfragisticsXF.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
