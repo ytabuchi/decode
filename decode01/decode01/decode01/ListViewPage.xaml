@@ -20,20 +20,38 @@
         <Setter Property="BorderRadius" Value="5"/>
       </Style>
       <!-- DataTemplate 置き換え -->
-      <DataTemplate x:Key="MonthTemplate">
+      <DataTemplate x:Key="AverageTemplate">
         <ViewCell>
           <StackLayout Orientation="Horizontal" Padding="5">
             <Image Source="thermos.png" Opacity="{Binding OpacityValue}" />
             <StackLayout Orientation="Vertical">
-              <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM}'}"
+              <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd}'}"
                      YAlign="Center" />
-              <Label Text="{Binding Value, StringFormat='{0} ℃'}"
-                     TextColor="Navy"
+              <Label Text="{Binding Value, StringFormat='{0:f1} ℃'}"
+                     TextColor="#3E7FC2"
                      YAlign="Center" />
             </StackLayout>
           </StackLayout>
         </ViewCell>
       </DataTemplate>
+      <DataTemplate x:Key="DefaultTemplate">
+        <ViewCell>
+          <StackLayout Orientation="Horizontal" Padding="5">
+            <Image Source="thermos.png" Opacity="{Binding OpacityValue}" />
+            <StackLayout Orientation="Vertical">
+              <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd HH時 }'}"
+                     Style="{StaticResource LabelStyle}"
+                     YAlign="Center" />
+              <Label Text="{Binding Value, StringFormat='{0:f1} ℃'}"
+                     TextColor="#3E7FC2"
+                     YAlign="Center" />
+            </StackLayout>
+          </StackLayout>
+        </ViewCell>
+
+
+      </DataTemplate>
+
       <!-- Converter -->
       <!--<local:Converters.OpacityConverter x:Key="opacityConverter" />-->
 
@@ -66,33 +84,7 @@
               VerticalOptions="FillAndExpand"
               HasUnevenRows="True">
       <ListView.ItemTemplate>
-        <DataTemplate>
 
-          <!--
-          <TextCell Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd  HH時}'}"
-                    Detail="{Binding Value}" />
-          -->
-
-
-<!--Converter={StaticResource opacityConverter}-->
-
-
-          <ViewCell>
-            <StackLayout Orientation="Horizontal" Padding="5">
-              <Image Source="thermos.png" Opacity="{Binding OpacityValue}" />
-              <StackLayout Orientation="Vertical">
-                <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd HH時 }'}"
-                       Style="{StaticResource LabelStyle}"
-                       YAlign="Center" />
-                <Label Text="{Binding Value, StringFormat='{0} ℃'}"
-                       TextColor="#3E7FC2"
-                       YAlign="Center" />
-              </StackLayout>
-            </StackLayout>
-          </ViewCell>
-
-
-        </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
 

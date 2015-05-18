@@ -11,15 +11,15 @@ using Xamarin.Forms;
 
 namespace decode01
 {
-   
+
     public partial class ListViewPage : ContentPage
     {
-        List<NewTemperature> tempList;
         List<Temperature> tempdata;
 
         public ListViewPage()
         {
             InitializeComponent();
+            //list.ItemsSource = null;
         }
 
         async void GetClicked(object sender, EventArgs args)
@@ -27,17 +27,18 @@ namespace decode01
             var StartDate = StartDatePicker.Date;
             var EndDate = StartDatePicker.Date.AddDays(Double.Parse(EndDateEntry.Text));
             tempdata = await GetTemperatureAsync(StartDate, EndDate);
-            
-            tempList = (from x in tempdata
-                        select new NewTemperature
-                        {
-                            RegisterDate = x.RegisterDate,
-                            Value = x.Value,
-                            OpacityValue = x.Value * 3.5 / 100,
-                        }).ToList();
+
+            var tempList = (from x in tempdata
+                            select new NewTemperature
+                            {
+                                RegisterDate = x.RegisterDate,
+                                Value = x.Value,
+                                OpacityValue = x.Value * 3.5 / 100,
+                            }).ToList();
 
             list.ItemsSource = tempList;
-            
+            list.ItemTemplate = this.Resources["DefaultTemplate"] as DataTemplate;
+
         }
 
         #region 並べ替えは不使用
@@ -57,14 +58,24 @@ namespace decode01
 
         async void AverageClicked(object sender, EventArgs e)
         {
-            if (tempList == null)
-            {
-                var StartDate = StartDatePicker.Date;
-                var EndDate = StartDatePicker.Date.AddDays(Double.Parse(EndDateEntry.Text));
-                tempdata = await GetTemperatureAsync(StartDate, EndDate);
-            }
+            var StartDate = StartDatePicker.Date;
+            var EndDate = StartDatePicker.Date.AddDays(Double.Parse(EndDateEntry.Text));
+            tempdata = await GetTemperatureAsync(StartDate, EndDate);
 
-            
+            var tempList = (from q in tempdata
+                            group q by q.RegisterDate.Date into newgroup
+                            orderby newgroup.Key
+                            select new NewTemperature
+                            {
+                                RegisterDate = newgroup.Key,
+                                Value = (from q2 in newgroup
+                                         select q2.Value).Average(),
+                                OpacityValue = (from q2 in newgroup
+                                                select q2.Value).Average() * 3.5 / 100,
+                            }).ToList();
+
+            list.ItemsSource = tempList;
+            list.ItemTemplate = this.Resources["AverageTemplate"] as DataTemplate;
 
             //Debug.WriteLine("Grouping");
             ////this.list.GroupDisplayBinding = 
@@ -75,6 +86,8 @@ namespace decode01
             //this.list.ItemTemplate =
             //    this.Resources["MonthTemplate"] as DataTemplate;
         }
+
+
 
         private async Task<List<Temperature>> GetTemperatureAsync(DateTime from, DateTime to)
         {
@@ -90,7 +103,7 @@ namespace decode01
     }
 
     public class EntryValidation : TriggerAction<Entry>
-    { 
+    {
         protected override void Invoke(Entry sender)
         {
             double result;
