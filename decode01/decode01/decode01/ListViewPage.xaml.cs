@@ -19,7 +19,12 @@ namespace decode01
         public ListViewPage()
         {
             InitializeComponent();
-            //list.ItemsSource = null;
+            list.ItemTapped += (sender, e) =>
+            {
+                list.SelectedItem = null;
+
+                DisplayAlert("Item Tapped", e.Item.ToString(), "OK");
+            };
         }
 
         async void GetClicked(object sender, EventArgs args)
@@ -40,21 +45,6 @@ namespace decode01
             list.ItemTemplate = this.Resources["DefaultTemplate"] as DataTemplate;
 
         }
-
-        #region 並べ替えは不使用
-        /*
-        void AscendingClicked(object sender, EventArgs e)
-        {
-            var list1 = tempList.OrderBy(a => a.Value).ToList();
-            list.ItemsSource = list1;
-        }
-        void DescendingClicked(object sender, EventArgs e)
-        {
-            var list1 = tempList.OrderByDescending(a => a.Value).ToList();
-            list.ItemsSource = list1;
-        }
-        */
-        #endregion
 
         async void AverageClicked(object sender, EventArgs e)
         {
@@ -87,8 +77,6 @@ namespace decode01
             //    this.Resources["MonthTemplate"] as DataTemplate;
         }
 
-
-
         private async Task<List<Temperature>> GetTemperatureAsync(DateTime from, DateTime to)
         {
             var uri = new Uri(
@@ -102,6 +90,9 @@ namespace decode01
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class EntryValidation : TriggerAction<Entry>
     {
         protected override void Invoke(Entry sender)

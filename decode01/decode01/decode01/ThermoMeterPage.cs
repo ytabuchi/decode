@@ -33,7 +33,7 @@ namespace decode01
             };
             startTime = new TimePicker
             {
-                Format = "hh時",
+                Format = "HH時",
                 Time = new TimeSpan(1, 0, 0),
             };
             dateLayout = new StackLayout {
@@ -99,7 +99,7 @@ namespace decode01
 
             await thermoBar.RotateTo(angle, 3000, Easing.CubicOut);
 
-            DependencyService.Get<ITextToSpeech>().Speak(string.Format("{0}ド です", thermo.ToString()));
+            DependencyService.Get<ITextToSpeech>().Speak(string.Format("{0:f1} ド です", thermo.ToString()));
         }
 
         private async Task<List<Temperature>> GetTemperatureAsync(DateTime from, DateTime to)

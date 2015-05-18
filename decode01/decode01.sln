@@ -66,6 +66,7 @@ Global
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{3458DF73-B354-4E38-A8F9-275E7966AD44}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -99,8 +100,8 @@ Global
 		{977253E1-40EF-48E3-913E-F0557ACF58D9}.AppStore|x86.ActiveCfg = AppStore|iPhone
 		{977253E1-40EF-48E3-913E-F0557ACF58D9}.Debug|Any CPU.ActiveCfg = Debug|iPhone
 		{977253E1-40EF-48E3-913E-F0557ACF58D9}.Debug|ARM.ActiveCfg = Debug|iPhone
-		{977253E1-40EF-48E3-913E-F0557ACF58D9}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
-		{977253E1-40EF-48E3-913E-F0557ACF58D9}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
+		{977253E1-40EF-48E3-913E-F0557ACF58D9}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{977253E1-40EF-48E3-913E-F0557ACF58D9}.Debug|iPhone.Build.0 = Debug|iPhone
 		{977253E1-40EF-48E3-913E-F0557ACF58D9}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{977253E1-40EF-48E3-913E-F0557ACF58D9}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{977253E1-40EF-48E3-913E-F0557ACF58D9}.Debug|Mixed Platforms.ActiveCfg = Debug|iPhone
@@ -190,7 +191,6 @@ Global
 		{960A32BD-F114-4BC1-A30F-4947A7FEB719}.Debug|ARM.Build.0 = Debug|ARM
 		{960A32BD-F114-4BC1-A30F-4947A7FEB719}.Debug|ARM.Deploy.0 = Debug|ARM
 		{960A32BD-F114-4BC1-A30F-4947A7FEB719}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{960A32BD-F114-4BC1-A30F-4947A7FEB719}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{960A32BD-F114-4BC1-A30F-4947A7FEB719}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{960A32BD-F114-4BC1-A30F-4947A7FEB719}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{960A32BD-F114-4BC1-A30F-4947A7FEB719}.Debug|Mixed Platforms.Build.0 = Debug|x86
