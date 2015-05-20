@@ -26,7 +26,7 @@
           <StackLayout Orientation="Horizontal" Padding="5">
             <Image Source="thermos.png" Opacity="{Binding OpacityValue}" />
             <StackLayout Orientation="Vertical">
-              <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd HH時 }'}"
+              <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd  H時}'}"
                      Style="{StaticResource LabelStyle}"
                      YAlign="Center" />
               <Label Text="{Binding Value, StringFormat='{0:f1} ℃'}"

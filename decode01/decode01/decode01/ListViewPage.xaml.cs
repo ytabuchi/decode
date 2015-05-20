@@ -11,6 +11,10 @@ using Xamarin.Forms;
 
 namespace decode01
 {
+    public class NewTemperature : Temperature
+    {
+        public double OpacityValue { get; set; }
+    }
 
     public partial class ListViewPage : ContentPage
     {
@@ -19,14 +23,23 @@ namespace decode01
         public ListViewPage()
         {
             InitializeComponent();
-            list.ItemTapped += (sender, e) =>
+
+            // List Item タップ時の処理です。
+            list.ItemTapped += async (sender, e) =>
             {
                 list.SelectedItem = null;
-
-                DisplayAlert("Item Tapped", e.Item.ToString(), "OK");
+                var data = (NewTemperature)e.Item;
+                await DisplayAlert("Item Tapped",
+                    string.Format("日時: {0:yyyy/MM/dd  H}時\n温度: {1} ℃",
+                    data.RegisterDate, data.Value), "OK");
             };
         }
 
+        /// <summary>
+        /// 取得ボタンクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         async void GetClicked(object sender, EventArgs args)
         {
             var StartDate = StartDatePicker.Date;
@@ -46,12 +59,18 @@ namespace decode01
 
         }
 
+        /// <summary>
+        /// 平均ボタンクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         async void AverageClicked(object sender, EventArgs e)
         {
             var StartDate = StartDatePicker.Date;
             var EndDate = StartDatePicker.Date.AddDays(Double.Parse(EndDateEntry.Text));
             tempdata = await GetTemperatureAsync(StartDate, EndDate);
 
+            // Linq で日付でグループ化して温度の平均値を取得します。
             var tempList = (from q in tempdata
                             group q by q.RegisterDate.Date into newgroup
                             orderby newgroup.Key
@@ -67,14 +86,6 @@ namespace decode01
             list.ItemsSource = tempList;
             list.ItemTemplate = this.Resources["AverageTemplate"] as DataTemplate;
 
-            //Debug.WriteLine("Grouping");
-            ////this.list.GroupDisplayBinding = 
-            ////    new Binding("RegisterDate", 
-            ////        BindingMode.OneWay, new MonthConveter());
-            ////this.list.IsGroupingEnabled = true;
-            ////this.list.GroupDisplayBinding = new Binding("Value",,new OpacityConverter());
-            //this.list.ItemTemplate =
-            //    this.Resources["MonthTemplate"] as DataTemplate;
         }
 
         private async Task<List<Temperature>> GetTemperatureAsync(DateTime from, DateTime to)
@@ -91,7 +102,7 @@ namespace decode01
     }
 
     /// <summary>
-    /// 
+    /// Entry チェックです。数値以外で文字色を赤にします。
     /// </summary>
     public class EntryValidation : TriggerAction<Entry>
     {
@@ -103,8 +114,4 @@ namespace decode01
         }
     }
 
-    public class NewTemperature : Temperature
-    {
-        public double OpacityValue { get; set; }
-    }
 }
