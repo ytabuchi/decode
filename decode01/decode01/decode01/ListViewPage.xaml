@@ -43,6 +43,7 @@
             <Image Source="thermos.png" Opacity="{Binding OpacityValue}" />
             <StackLayout Orientation="Vertical">
               <Label Text="{Binding RegisterDate, StringFormat='{0:yyyy/MM/dd}'}"
+                     Style="{StaticResource LabelStyle}"
                      YAlign="Center" />
               <Label Text="{Binding Value, StringFormat='{0:f1} ℃'}"
                      TextColor="#3E7FC2"
@@ -52,24 +53,25 @@
         </ViewCell>
       </DataTemplate>
 
-      <!-- Converter -->
+      <!-- TODO: Converter を実装する -->
       <!--<local:Converters.OpacityConverter x:Key="opacityConverter" />-->
 
     </ResourceDictionary>
   </ContentPage.Resources>
 
   <StackLayout>
+    
     <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="Center">
       <DatePicker x:Name="StartDatePicker" Date="2015/4/1" Format="yyyy/MM/dd" />
-      <Entry x:Name="EndDateEntry" Text="" WidthRequest="60" Placeholder="日">
+      <Entry x:Name="EndDateEntry" Text="" WidthRequest="70" Placeholder="日">
         <Entry.Triggers>
           <EventTrigger Event="TextChanged">
             <local:EntryValidation />
           </EventTrigger>
         </Entry.Triggers>
       </Entry>
-      <Button Text="取得" Clicked="GetClicked" Style="{StaticResource ButtonStyle}" WidthRequest="70"></Button>
-      <Button Text="平均" Clicked="AverageClicked" WidthRequest="70">
+      <Button x:Name="GetButton" Text="取得" Clicked="ButtonClicked" Style="{StaticResource ButtonStyle}" WidthRequest="70"></Button>
+      <Button x:Name="AverageButton" Text="平均" Clicked="ButtonClicked" WidthRequest="70">
         <Button.Triggers> <!-- Data Trigger: EndDateEntry に文字がないと Button が Disable になります。 -->
           <DataTrigger TargetType="Button"
                        Binding="{Binding Source={x:Reference EndDateEntry}, Path=Text.Length}"
@@ -79,10 +81,12 @@
         </Button.Triggers>
       </Button>
     </StackLayout>
+    
 
     <ListView x:Name="list"
               VerticalOptions="FillAndExpand"
-              HasUnevenRows="True">
+              HasUnevenRows="True"
+              ItemTapped="ListItemTapped">
       <ListView.ItemTemplate>
 
       </ListView.ItemTemplate>
