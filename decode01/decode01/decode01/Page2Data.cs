@@ -48,9 +48,9 @@ namespace decode01
                         Random rand = new Random(DateTime.Now.Millisecond);
                         this.TempCollection.Add(new Temperature
                         {
-                            RegisterDate = this.TempCollection.Last().RegisterDate.AddHours(6),
+                            RegisterDate = this.TempCollection.Last().RegisterDate.AddHours(1),
                             Value = this.TempCollection.Last().Value +
-                            (float)((double)rand.Next(-2, 2) * rand.NextDouble())
+                            (float)((double)rand.Next(-1, 2) * rand.NextDouble())
                         });
                         (this.StopFeedCommand as Command).ChangeCanExecute();
                         return IsInLoop;

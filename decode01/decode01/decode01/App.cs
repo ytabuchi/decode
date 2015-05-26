@@ -52,15 +52,16 @@ namespace decode01
                             await Navigation.PushAsync(new ListViewPage()))
                     },
                     new Button{
-                        Text = "Infragistics Control!",
-                        Command = new Command(async () => 
-                            await Navigation.PushAsync(new Page2()))
-                    },
-                    new Button{
-                        Text = "Infragistics Gauge!",
+                        Text = "Infragistics ThermoMeter",
                         Command = new Command(async () => 
                             await Navigation.PushAsync(new ThermoMeterPage2()))
                     },
+                         new Button{
+                        Text = "Infragistics Garicchi Room",
+                        Command = new Command(async () => 
+                            await Navigation.PushAsync(new Page2()))
+                    },
+               
 
                 }
             };

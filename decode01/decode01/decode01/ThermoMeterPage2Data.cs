@@ -87,7 +87,7 @@ namespace decode01
                    this.startDateTime.Date, this.StartDateTime.Date.AddDays(1));
                
                this.TemperatureValue = list[this.SelectedTime.Hours].Value;
-               DependencyService.Get<ITextToSpeech>().Speak(string.Format("{0}℃です", 
+               DependencyService.Get<ITextToSpeech>().Speak(string.Format("{0:f1} ド です", 
                    this.TemperatureValue.ToString()));
            });
         }

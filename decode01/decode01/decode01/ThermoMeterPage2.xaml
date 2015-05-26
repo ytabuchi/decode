@@ -14,7 +14,7 @@
       <TimePicker Time="{Binding SelectedTime, Mode=TwoWay}" />
       <Button  Text="温度取得" Command="{Binding GetTemperatureCommand}" />
     </StackLayout>
-    <ig:XFRadialGauge
+    <ig:XFRadialGauge BackingBrush="White"
         Value="{Binding TemperatureValue}"
         VerticalOptions="FillAndExpand"
         ScaleStartAngle="150" ScaleEndAngle="30"
