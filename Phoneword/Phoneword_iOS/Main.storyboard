@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13A451" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="119">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="6">
+            <objects>
+                <viewController id="7" sceneMemberID="viewController" customClass="ViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4"/>
+                        <viewControllerLayoutGuide type="bottom" id="5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8" clipsSubviews="YES">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter a Phoneword:" lineBreakMode="tailTruncation" minimumFontSize="10" id="11" translatesAutoresizingMaskIntoConstraints="NO" preferredMaxLayoutWidth="500">
+                                <rect key="frame" x="30" y="90" width="540" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1-800-XAMARIN" borderStyle="roundedRect" minimumFontSize="17" id="12" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="30" y="130" width="540" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="13" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="30" y="190" width="536" height="30"/>
+                                <state key="normal" title="Translate">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="14" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="30" y="240" width="540" height="30"/>
+                                <state key="normal" title="Call">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="790" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="30" y="290" width="540" height="30"/>
+                                <state key="normal" title="CallHistory">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue id="877" destination="162" kind="show"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="11" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="26" id="383"/>
+                            <constraint firstItem="11" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="30" id="384"/>
+                            <constraint firstItem="8" firstAttribute="trailing" secondItem="11" secondAttribute="trailing" constant="30" id="385"/>
+                            <constraint firstItem="12" firstAttribute="top" secondItem="11" secondAttribute="bottom" constant="20" id="386"/>
+                            <constraint firstItem="12" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="30" id="387"/>
+                            <constraint firstItem="8" firstAttribute="trailing" secondItem="12" secondAttribute="trailing" constant="30" id="388"/>
+                            <constraint firstItem="12" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="66" id="389"/>
+                            <constraint firstItem="13" firstAttribute="top" secondItem="12" secondAttribute="bottom" constant="30" id="390"/>
+                            <constraint firstItem="13" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="30" id="391"/>
+                            <constraint firstItem="8" firstAttribute="trailing" secondItem="13" secondAttribute="trailing" constant="34" id="392"/>
+                            <constraint firstItem="14" firstAttribute="top" secondItem="13" secondAttribute="bottom" constant="20" id="393" relation="lessThanOrEqual"/>
+                            <constraint firstItem="14" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="30" id="394"/>
+                            <constraint firstItem="8" firstAttribute="trailing" secondItem="14" secondAttribute="trailing" constant="30" id="395"/>
+                            <constraint firstItem="8" firstAttribute="trailing" secondItem="790" secondAttribute="trailing" constant="30" id="796"/>
+                            <constraint firstItem="790" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="30" id="797"/>
+                            <constraint firstItem="790" firstAttribute="top" secondItem="14" secondAttribute="bottom" constant="20" id="798" relation="lessThanOrEqual"/>
+                            <constraint firstItem="5" firstAttribute="top" secondItem="790" secondAttribute="bottom" constant="10" id="799" relation="greaterThanOrEqual"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="PhoneNumberText" destination="12" id="name-outlet-12"/>
+                        <outlet property="TranslateButton" destination="13" id="name-outlet-13"/>
+                        <outlet property="CallButton" destination="14" id="name-outlet-14"/>
+                        <outlet property="CallHistoryButton" destination="790" id="name-outlet-790"/>
+                    </connections>
+                    <navigationItem title="Phoneword" id="151" key="navigationItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="184"/>
+        </scene>
+        <scene sceneID="118">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="119" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="122" translucent="NO">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <color key="barTintColor" colorSpace="calibratedRGB" red="0.16470588235294117" green="0.51764705882352946" blue="0.82352941176470584" alpha="1"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue id="152" destination="7" kind="relationship" relationship="rootViewController"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="123" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-45" y="184"/>
+        </scene>
+        <scene sceneID="161">
+            <objects>
+                <tableViewController id="162" sceneMemberID="viewController" customClass="CallHistoryController" title="Call History">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="163">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="166">
+                                <rect key="frame" x="0.0" y="22" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="166" id="167">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="162" id="164"/>
+                            <outlet property="delegate" destination="162" id="165"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="168" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1466" y="184"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="icon.png" width="180" height="180"/>
+    </resources>
+</document>
