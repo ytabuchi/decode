@@ -68,7 +68,7 @@ namespace decode01
         {
                 var uri = new Uri(
                 string.Format(
-                "http://decodexamarin.azurewebsites.net/api/temp?from={0}&to={1}", from, to));
+                "http://azuretemperature.azurewebsites.net/api/temp?from={0}&to={1}", from, to));
             var client = new HttpClient();
             var response = await client.GetAsync(uri);
             var json = await response.Content.ReadAsStringAsync();

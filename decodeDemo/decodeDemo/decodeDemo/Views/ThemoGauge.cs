@@ -1,34 +1,33 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Reflection.Emit;
 using System.Text;
-using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using decodeDemo.Models;
 
-namespace decode01
+namespace decodeDemo.Views
 {
-    public class ThermoMeterPage : ContentPage
+    public class ThemoGauge : ContentPage
     {
-        BoxView thermoBar;
-        Image bgImage;
-        DatePicker startDate;
-        TimePicker startTime;
-        StackLayout dateLayout;
+        private BoxView thermoBar;
+        private Image bgImage;
+        private DatePicker startDate;
+        private TimePicker startTime;
+        private StackLayout dateLayout;
+        private GetTemperature gt = new GetTemperature();
 
-        public ThermoMeterPage()
+        public ThemoGauge()
         {
-            // AbsoluteLayout を用意して背景画像に "埋め込まれたリソース" で配置した画像を読み込みます。
+            // AbsoluteLayoutを用意して背景画像を指定します。
             AbsoluteLayout abs = new AbsoluteLayout
             {
                 BackgroundColor = Color.White,
             };
             bgImage = new Image { Aspect = Aspect.AspectFit };
-            bgImage.Source = ImageSource.FromResource("decode01.Thermo.png");
+            bgImage.Source = ImageSource.FromFile("Thermo.png");
 
-            // 各種コントロール設定＆配置
             startDate = new DatePicker
             {
                 Format = "yyyy/MM/dd",
@@ -38,7 +37,7 @@ namespace decode01
             {
                 Format = "H時",
                 Time = new TimeSpan(1, 0, 0),
-                WidthRequest = 60,
+                WidthRequest = Device.OnPlatform(60, 60, 90),
             };
             dateLayout = new StackLayout
             {
@@ -48,7 +47,7 @@ namespace decode01
                     startTime,
                     new Button {
                         Text = "温度取得",
-                        // thermoBar を回転させるメソッド
+                        // thermoBarを回転させるメソッドを呼び出します。
                         Command = new Command(() => RotateThermoBarAsync(
                             startDate.Date, 
                             startDate.Date.AddDays(1), 
@@ -56,6 +55,7 @@ namespace decode01
                     }
                 }
             };
+
             thermoBar = new BoxView
             {
                 Color = Color.FromHex("#bd3f3f"),
@@ -63,12 +63,13 @@ namespace decode01
                 Opacity = 0.7,
             };
 
+            // 読み込み順に最背面から配置されます。
             abs.Children.Add(bgImage);
             abs.Children.Add(thermoBar);
             abs.Children.Add(dateLayout);
 
             Content = abs;
-            Title = "温度計";
+            Title = "温度計 (C#)";
 
             SizeChanged += OnPageSizeChanged;
         }
@@ -95,7 +96,7 @@ namespace decode01
             AbsoluteLayout.SetLayoutFlags(dateLayout,
                 AbsoluteLayoutFlags.PositionProportional);
             AbsoluteLayout.SetLayoutBounds(dateLayout,
-                new Rectangle(0.5, 0, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+                new Rectangle(0.5, 0.01, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutBounds(thermoBar,
                 new Rectangle(center.X - 0.5 * width, center.Y - offset * height, width, height));
             thermoBar.AnchorX = 0.51;
@@ -110,7 +111,7 @@ namespace decode01
         /// <param name="time">時間</param>
         private async void RotateThermoBarAsync(DateTime from, DateTime to, TimeSpan time)
         {
-            var tempdata = await GetTemperatureAsync(from, to);
+            var tempdata = await gt.GetTemperatureAsync(from, to);
             var thermo = tempdata[time.Hours].Value;
             var angle = (thermo - 10) * 3;
             
@@ -119,23 +120,5 @@ namespace decode01
             // Dependency Service で温度を読み上げます。
             DependencyService.Get<ITextToSpeech>().Speak(string.Format("{0:f1} ド です", thermo));
         }
-
-        /// <summary>
-        /// 温度の json データを取得します。
-        /// </summary>
-        /// <param name="from">開始日</param>
-        /// <param name="to">終了日</param>
-        /// <returns></returns>
-        private async Task<List<Temperature>> GetTemperatureAsync(DateTime from, DateTime to)
-        {
-            var uri = new Uri(
-                string.Format(
-                "http://azuretemperature.azurewebsites.net/api/temp?from={0}&to={1}", from, to));
-            var client = new HttpClient();
-            var response = await client.GetAsync(uri);
-            var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<List<Temperature>>(json);
-        }
-
     }
 }
