@@ -33,19 +33,18 @@ namespace XF_Phoneword
                     callButton.IsEnabled = true;
                 }
             };
-            this.callButton.Clicked += (sender, e) =>
+            callButton.Clicked += async (sender, e) =>
             {
-                // ダイヤルする電話番号を保存します。
-                phoneNumbers.Add(translatedNumber);
-                var url = "tel:" + translatedNumber;
-                // 電話出来なければ alert を表示します。
-                Device.OpenUri(new Uri(url));
-                //await DisplayAlert("Not supported", "'tel' is not supported on this device.", "OK");
-                callHistoryButton.IsEnabled = true;
+                if (await DisplayAlert("Call?", $"Call {translatedNumber} ?", "Yes, Call", "Cancel"))
+                {
+                    phoneNumbers.Add(translatedNumber);
+                    Device.OpenUri(new Uri("tel:{translatedNumber}"));
+                    callHistoryButton.IsEnabled = true;
+                }
             };
-            this.callHistoryButton.Clicked += async (sender, e) =>
+            callHistoryButton.Clicked += (sender, e) =>
             {
-                await Navigation.PushAsync(new DetailPage(phoneNumbers));
+                Navigation.PushAsync(new DetailPage(phoneNumbers));
             };
         }
     }
