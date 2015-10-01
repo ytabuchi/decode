@@ -69,7 +69,7 @@ namespace XF_Phoneword
 
         private async void CallButton_Clicked(object sender, EventArgs e)
         {
-            if (await DisplayAlert("Call?", $"Call {translatedNumber} ?", "Yes, Call", "Cancel"))
+            if (await DisplayAlert("Call?", string.Format("Call {0} ?", translatedNumber), "Yes, Call", "Cancel"))
             {
                 phoneNumbers.Add(translatedNumber);
                 callHistoryButton.IsEnabled = true;
