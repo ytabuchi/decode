@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="DetailPage.cs" />
+    <Compile Include="MainPageCS.cs" />
     <Compile Include="MainPageXaml.xaml.cs">
       <DependentUpon>MainPageXaml.xaml</DependentUpon>
     </Compile>

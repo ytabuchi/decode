@@ -11,7 +11,7 @@ namespace XF_Phoneword
     {
         public App()
         {
-            var nav = new NavigationPage(new MainPageXaml());
+            var nav = new NavigationPage(new MainPageCS());
             nav.BarBackgroundColor = Color.FromHex("3498DB");
             nav.BarTextColor = Color.White;
             MainPage = nav;
