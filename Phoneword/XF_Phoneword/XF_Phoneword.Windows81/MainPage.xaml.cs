@@ -20,11 +20,12 @@ namespace XF_Phoneword.Windows81
     /// <summary>
     /// それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage
     {
         public MainPage()
         {
             this.InitializeComponent();
+            LoadApplication(new XF_Phoneword.App());
         }
     }
 }

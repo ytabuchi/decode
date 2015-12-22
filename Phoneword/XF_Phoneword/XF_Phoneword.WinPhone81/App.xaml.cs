@@ -13,17 +13,20 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
-// 空のアプリケーション テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234227 を参照してください
+// 空のアプリケーション テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=391641 を参照してください
 
-namespace XF_Phoneword.Windows81
+namespace XF_Phoneword.WinPhone81
 {
     /// <summary>
     /// 既定の Application クラスに対してアプリケーション独自の動作を実装します。
     /// </summary>
-    sealed partial class App : Application
+    public sealed partial class App : Application
     {
+        private TransitionCollection transitions;
+
         /// <summary>
         /// 単一アプリケーション オブジェクトを初期化します。これは、実行される作成したコードの
         /// 最初の行であり、main() または WinMain() と論理的に等価です。
@@ -31,17 +34,17 @@ namespace XF_Phoneword.Windows81
         public App()
         {
             this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            this.Suspending += this.OnSuspending;
         }
 
         /// <summary>
         /// アプリケーションがエンド ユーザーによって正常に起動されたときに呼び出されます。他のエントリ ポイントは、
-        /// アプリケーションが特定のファイルを開くために起動されたときなどに使用されます。
+        /// アプリケーションが特定のファイルを開くために呼び出されたときに
+        /// 検索結果やその他の情報を表示するために使用されます。
         /// </summary>
         /// <param name="e">起動の要求とプロセスの詳細を表示します。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -57,16 +60,18 @@ namespace XF_Phoneword.Windows81
             {
                 // ナビゲーション コンテキストとして動作するフレームを作成し、最初のページに移動します
                 rootFrame = new Frame();
+
+                // TODO: この値をアプリケーションに適切なキャッシュ サイズに変更します
+                rootFrame.CacheSize = 1;
+
                 // 既定の言語を設定します
                 rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
-
-                rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
-                    //TODO: 以前中断したアプリケーションから状態を読み込みます
+                    // TODO: 以前中断したアプリケーションから状態を読み込みます
                 }
 
                 // フレームを現在のウィンドウに配置します
@@ -75,23 +80,42 @@ namespace XF_Phoneword.Windows81
 
             if (rootFrame.Content == null)
             {
+                // スタートアップのターンスタイル ナビゲーションを削除します。
+                if (rootFrame.ContentTransitions != null)
+                {
+                    this.transitions = new TransitionCollection();
+                    foreach (var c in rootFrame.ContentTransitions)
+                    {
+                        this.transitions.Add(c);
+                    }
+                }
+
+                rootFrame.ContentTransitions = null;
+                rootFrame.Navigated += this.RootFrame_FirstNavigated;
+
                 // ナビゲーションの履歴スタックが復元されていない場合、最初のページに移動します。
                 // このとき、必要な情報をナビゲーション パラメーターとして渡して、新しいページを
-                // 作成します
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                //作成します
+                if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                {
+                    throw new Exception("Failed to create initial page");
+                }
             }
+
             // 現在のウィンドウがアクティブであることを確認します
             Window.Current.Activate();
         }
 
         /// <summary>
-        /// 特定のページへの移動が失敗したときに呼び出されます
+        /// アプリを起動した後のコンテンツの移行を復元します。
         /// </summary>
-        /// <param name="sender">移動に失敗したフレーム</param>
-        /// <param name="e">ナビゲーション エラーの詳細</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        /// <param name="sender">ハンドラーがアタッチされたオブジェクト。</param>
+        /// <param name="e">ナビゲーション イベントの詳細。</param>
+        private void RootFrame_FirstNavigated(object sender, NavigationEventArgs e)
         {
-            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+            var rootFrame = sender as Frame;
+            rootFrame.ContentTransitions = this.transitions ?? new TransitionCollection() { new NavigationThemeTransition() };
+            rootFrame.Navigated -= this.RootFrame_FirstNavigated;
         }
 
         /// <summary>
@@ -104,7 +128,8 @@ namespace XF_Phoneword.Windows81
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: アプリケーションの状態を保存してバックグラウンドの動作があれば停止します
+
+            // TODO: アプリケーションの状態を保存してバックグラウンドの動作があれば停止します
             deferral.Complete();
         }
     }
